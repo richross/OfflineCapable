@@ -1,20 +1,39 @@
-﻿namespace OfflineCapable;
+﻿using OfflineCapable.Data;
+using OfflineCapable.Models;
+
+namespace OfflineCapable;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    //int count = 0;
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+    private readonly InspectionsContext _context;
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
-		CounterLabel.Text = $"Current count: {count}";
+    public MainPage(InspectionsContext context)
+    {
+        InitializeComponent();
+        _context = context;
 
-		SemanticScreenReader.Announce(CounterLabel.Text);
-	}
+        
+    }
+
+    private async void OnCounterClicked(object sender, EventArgs e)
+    {
+        //count++;
+        //CounterLabel.Text = $"Current count: {count}";
+
+        //SemanticScreenReader.Announce(CounterLabel.Text);
+
+        var inspection = new Inspection { Title = "Test", StartDate = DateTime.Now };
+
+        _context.Add(inspection);
+
+        await _context.SaveChangesAsync();
+
+        int count = _context.Inspections.Count();
+
+        CounterLabel.Text = $"Current number of records: {count}";
+
+    }
 }
 

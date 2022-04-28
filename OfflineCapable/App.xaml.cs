@@ -1,4 +1,6 @@
-﻿namespace OfflineCapable;
+﻿using OfflineCapable.Data;
+
+namespace OfflineCapable;
 
 public partial class App : Application
 {

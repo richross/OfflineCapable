@@ -1,4 +1,8 @@
-﻿namespace OfflineCapable;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using OfflineCapable.Data;
+
+namespace OfflineCapable;
 
 public static class MauiProgram
 {
@@ -13,6 +17,16 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		return builder.Build();
+		//defines the physical location of the database
+		string dbPath = Path.Combine(FileSystem.AppDataDirectory, "inspections.db3");
+
+		builder.Services.AddDbContext<InspectionsContext>(
+            options => options.UseSqlite($"Filename={dbPath}"));
+
+		builder.Services.AddSingleton<MainPage>();
+
+        return builder.Build();
+
 	}
+
 }
