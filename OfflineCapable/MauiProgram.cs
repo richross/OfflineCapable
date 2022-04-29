@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OfflineCapable.Data;
+using OfflineCapable.Models;
+using System.Reflection;
 
 namespace OfflineCapable;
 
@@ -23,7 +26,11 @@ public static class MauiProgram
 		builder.Services.AddDbContext<InspectionsContext>(
             options => options.UseSqlite($"Filename={dbPath}"));
 
+		//needed to see the injection of the dbcontext
 		builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddSingleton<LocalData>();
+
+		builder.Configuration.AddUserSecrets(Assembly.GetExecutingAssembly(), true);
 
         return builder.Build();
 

@@ -1,39 +1,36 @@
-﻿using OfflineCapable.Data;
+﻿using Microsoft.Extensions.Configuration;
+using OfflineCapable.Data;
 using OfflineCapable.Models;
+using System.Net.Http.Json;
 
 namespace OfflineCapable;
 
 public partial class MainPage : ContentPage
 {
-    //int count = 0;
 
     private readonly InspectionsContext _context;
 
-    public MainPage(InspectionsContext context)
+    public MainPage(InspectionsContext context, IConfiguration config)
     {
         InitializeComponent();
         _context = context;
 
-        
+        ConfigurationSettings.serviceClientUrl = config["serviceClientUrl"];
+        ConfigurationSettings.clientId = config["clientId"];
+        ConfigurationSettings.clientSecret = config["clientSecret"];
+        ConfigurationSettings.loginUrl = config["loginUrl"];       
     }
 
-    private async void OnCounterClicked(object sender, EventArgs e)
+    //load dataverse data page
+    private void DataverseView_Clicked(object sender, EventArgs e)
     {
-        //count++;
-        //CounterLabel.Text = $"Current count: {count}";
+        Navigation.PushAsync(new Dataverse());
+    }
 
-        //SemanticScreenReader.Announce(CounterLabel.Text);
-
-        var inspection = new Inspection { Title = "Test", StartDate = DateTime.Now };
-
-        _context.Add(inspection);
-
-        await _context.SaveChangesAsync();
-
-        int count = _context.Inspections.Count();
-
-        CounterLabel.Text = $"Current number of records: {count}";
-
+    //load local data page
+    private void LocalDataView_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new LocalData(_context));
     }
 }
 

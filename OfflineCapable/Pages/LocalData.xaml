@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OfflineCapable.LocalData"
+             Title="LocalData">
+    <StackLayout>
+        <VerticalStackLayout Spacing="25" Padding="30" BindableLayout.ItemsSource="{Binding Inspections}">
+            <Button x:Name="Back" Clicked="Back_Clicked" Text="Back"></Button>
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Title}" Padding="10"></Label>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </VerticalStackLayout>
+    </StackLayout>
+</ContentPage>
