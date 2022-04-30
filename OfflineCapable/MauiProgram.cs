@@ -28,7 +28,7 @@ public static class MauiProgram
 
 		//needed to see the injection of the dbcontext
 		builder.Services.AddSingleton<MainPage>();
-		builder.Services.AddSingleton<LocalData>();
+		builder.Services.AddSingleton<IInspectionsRepository, InspectionsRepository>();
 
 		builder.Configuration.AddUserSecrets(Assembly.GetExecutingAssembly(), true);
 

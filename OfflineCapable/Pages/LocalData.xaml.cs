@@ -1,21 +1,17 @@
 using OfflineCapable.Data;
+using OfflineCapable.Models;
 
 namespace OfflineCapable;
 
 public partial class LocalData : ContentPage
 {
-	private readonly InspectionsContext _context;
+	private readonly IInspectionsRepository _repo;
 
-	public LocalData(InspectionsContext context)
+	public LocalData(IInspectionsRepository repo)
 	{
 		InitializeComponent();
-		_context = context;
+		_repo = repo;
 
-		this.BindingContext = _context;
+		this.BindingContext = _repo.GetInspections();
 	}
-
-    private void Back_Clicked(object sender, EventArgs e)
-    {
-		Navigation.PopAsync(false);
-    }
 }

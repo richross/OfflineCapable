@@ -8,12 +8,12 @@ namespace OfflineCapable;
 public partial class MainPage : ContentPage
 {
 
-    private readonly InspectionsContext _context;
+    private readonly IInspectionsRepository _repo;
 
-    public MainPage(InspectionsContext context, IConfiguration config)
+    public MainPage(IInspectionsRepository repo, IConfiguration config)
     {
         InitializeComponent();
-        _context = context;
+        _repo = repo;
 
         ConfigurationSettings.serviceClientUrl = config["serviceClientUrl"];
         ConfigurationSettings.clientId = config["clientId"];
@@ -30,7 +30,7 @@ public partial class MainPage : ContentPage
     //load local data page
     private void LocalDataView_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new LocalData(_context));
+        Navigation.PushAsync(new LocalData(_repo));
     }
 }
 

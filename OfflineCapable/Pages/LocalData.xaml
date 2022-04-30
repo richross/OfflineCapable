@@ -4,11 +4,18 @@
              x:Class="OfflineCapable.LocalData"
              Title="LocalData">
     <StackLayout>
-        <VerticalStackLayout Spacing="25" Padding="30" BindableLayout.ItemsSource="{Binding Inspections}">
-            <Button x:Name="Back" Clicked="Back_Clicked" Text="Back"></Button>
+        <VerticalStackLayout Spacing="25" Padding="30" BindableLayout.ItemsSource="{Binding}">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <Label Text="{Binding Title}" Padding="10"></Label>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"></ColumnDefinition>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="{Binding Title}" Padding="10"></Label>
+                        <Label Grid.Column="1" Text="{Binding StartDate}" Padding="10"></Label>
+                    </Grid>
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
         </VerticalStackLayout>
