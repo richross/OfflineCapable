@@ -22,12 +22,14 @@ namespace OfflineCapable.Models
         public string _owningbusinessunit_value { get; set; }
         public int statecode { get; set; }
         public int statuscode { get; set; }
-        public string crb24_name { get; set; }
+        [JsonPropertyName("bac_name")]
+        public string InspectionName { get; set; }
         public string _ownerid_value { get; set; }
         public DateTime modifiedon { get; set; }
         public string _modifiedby_value { get; set; }
         public string _owninguser_value { get; set; }
-        public string crb24_inspectionid { get; set; }
+        [JsonPropertyName("bac_inspectionid")]
+        public string InspectionId { get; set; }
         public int versionnumber { get; set; }
         public DateTime createdon { get; set; }
         public string _createdby_value { get; set; }

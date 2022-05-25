@@ -53,7 +53,7 @@ namespace OfflineCapable.Data
             headers.Add("OData-Version", "4.0");
             headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            return client.GetAsync("crb24_inspections").Result;
+            return client.GetAsync("bac_inspections").Result;
         }
     }
 }
