@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OfflineCapable.Data;
 using OfflineCapable.Models;
+using OfflineCapable.Pages;
+using OfflineCapable.ViewModels;
 using System.Reflection;
 
 namespace OfflineCapable;
@@ -27,8 +29,13 @@ public static class MauiProgram
             options => options.UseSqlite($"Filename={dbPath}"));
 
 		//needed to see the injection of the dbcontext
-		builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddSingleton<Businesses>();
+		builder.Services.AddTransient<Inspections>();
 		builder.Services.AddSingleton<IInspectionsRepository, InspectionsRepository>();
+
+		builder.Services.AddSingleton<DataverseContext>();
+		builder.Services.AddSingleton<BusinessesViewModel>();
+		builder.Services.AddTransient<InspectionsViewModel>();
 
 		builder.Configuration.AddUserSecrets(Assembly.GetExecutingAssembly(), true);
 

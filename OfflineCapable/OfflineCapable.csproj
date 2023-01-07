@@ -46,15 +46,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview1" />
 	  <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.4" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.4" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
 	  <PackageReference Include="Microsoft.Identity.Client" Version="4.43.1" />
 	  <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.2.9" />
+	  <PackageReference Include="System.Text.Json" Version="6.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\Dataverse.xaml">
+	  <MauiXaml Update="Pages\Businesses.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Inspections.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\LocalData.xaml">

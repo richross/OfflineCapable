@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pwrplt="clr-namespace:OfflineCapable.Models.PwrPlt"
+             xmlns:viewmodels="clr-namespace:OfflineCapable.ViewModels"
+             x:Class="OfflineCapable.Pages.Inspections"
+             x:DataType="viewmodels:InspectionsViewModel"
+             Title="Binding Title">
+    <Grid 
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="Auto"
+        RowSpacing="0">
+        <CollectionView
+            Grid.ColumnSpan="2"
+            ItemsSource="{Binding Inspections}"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="pwrplt:InspectionPwrPlt">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="125" Style="{StaticResource CardView}">
+                            <Grid Padding="0" ColumnDefinitions="125,*">
+                                <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Padding="10">
+                                    <Label Style="{StaticResource LargeLabel}" Text="{Binding InspectionName}" />
+                                    <Label Style="{StaticResource MediumLabel}" Text="{Binding InspectionId}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>            
+        </CollectionView>
+    </Grid>
+</ContentPage>

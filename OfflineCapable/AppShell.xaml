@@ -4,11 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:OfflineCapable"
+    xmlns:pages="clr-namespace:OfflineCapable.Pages"
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
         Title="Hello, World!"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+        ContentTemplate="{DataTemplate pages:Businesses}"
+        Route="Businesses" />
+    
 </Shell>

@@ -5,7 +5,6 @@
 
     <ScrollView>
         <VerticalStackLayout Spacing="25" Padding="30">
-            <Button x:Name="DataverseView" Text="Dataverse" Clicked="DataverseView_Clicked"></Button>
             <Button x:Name="LocalDataView" Text="Local Data" Clicked="LocalDataView_Clicked"></Button>
         </VerticalStackLayout>
     </ScrollView>
